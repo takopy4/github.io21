@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== ШАПКА (HEADER) ==================== -->
+    <!-- Шапка тянется на всю ширину окна -->
+    <header id="main-header">
+        <!-- Внутренний контейнер ограничивает контент 960px и центрирует -->
+        <div class="container header-inner">
+            
+            <!-- Левая часть: Лого и Название -->
+            <div class="header-left">
+                <div id="logo">Лого</div>
+                <div id="site-name">Название сайта</div>
+            </div>
+
+            <!-- Правая часть: Меню навигации (NAV) -->
+            <nav id="main-nav">
+                <a href="#links">Ссылка меню 1</a>
+                <a href="#table">Ссылка 2</a>
+                <a href="#form">Ссылка 3</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- ==================== ОСНОВНОЙ КОНТЕНТ ==================== -->
+    <!-- Контейнер ограничивает контент 960px и центрирует -->
+    <main class="container">
+        
+        <!-- Блок 1: Список гиперссылок -->
+        <section id="links" class="content-block">
+            <h2>Список гиперссылок</h2>
+            <ul>
+                <li><a href="http://kubsu.ru/">Абсолютная гиперссылка на главную страницу сайта kubsu.ru</a></li>
+                <li><a href="https://kubsu.ru/">Абсолютная гиперссылка на главную сайта kubsu.ru в протоколе https</a></li>
+                <li>
+                    <a href="https://kubsu.ru/">
+                        <img src="https://kubsu.ru/sites/all/themes/kubsu/logo.png" alt="Логотип КубГУ" width="100">
+                    </a>
+                </li>
+                <li><a href="page.html">Сокращенная ссылка на внутреннюю страницу</a></li>
+                <li><a href="/">Сокращенная ссылка на главную страницу</a></li>
+                <li><a href="#top">Ссылка на фрагмент текущей страницы</a></li>
+                <li><a href="https://kubsu.ru/?param1=value1&param2=value2&param3=value3">Ссылка с тремя параметрами в URL</a></li>
+                <li><a href="https://kubsu.ru/page.html?id=123">Ссылка с параметром id в URL</a></li>
+                <li><a href="current.html">Относительная на страницу в текущем каталоге</a></li>
+                <li><a href="about/about.html">Относительная на страницу в каталоге about</a></li>
+                <li><a href="../up.html">Относительная на страницу в каталоге уровнем выше текущего</a></li>
+                <li><a href="../../up2.html">Относительная на страницу в каталоге двумя уровнями выше</a></li>
+                <li><a href="https://ru.wikipedia.org/wiki/HTML#История">Ссылка на фрагмент страницы стороннего сайта</a></li>
+                <li><a href="">Ссылка с пустым href</a></li>
+                <li><a>Ссылка без href</a></li>
+                <li><a href="https://kubsu.ru/" rel="nofollow">Ссылка, по которой запрещен переход поисковикам</a></li>
+                <li><noindex><a href="https://kubsu.ru/" rel="nofollow">Запрещенная для индексации поисковиками</a></noindex></li>
+                <li><a href="ftp://user:password@ftp.example.com/file.txt">Ссылка на файл на сервере FTP с авторизацией</a></li>
+            </ul>
+        </section>
+
+        <!-- Блок 2: Таблица -->
+        <section id="table" class="content-block">
+            <h2>Таблица</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Заголовок 1</th>
+                        <th>Заголовок 2</th>
+                        <th>Заголовок 3</th>
+                        <th>Заголовок 4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="even">
+                        <td>Строка 1, Ячейка 1</td>
+                        <td>Строка 1, Ячейка 2</td>
+                        <td colspan="2">Строка 1, Ячейка 3 (объединена с 4)</td>
+                    </tr>
+                    <tr class="odd">
+                        <td>Строка 2, Ячейка 1</td>
+                        <td>Строка 2, Ячейка 2</td>
+                        <td>Строка 2, Ячейка 3</td>
+                        <td>Строка 2, Ячейка 4</td>
+                    </tr>
+                    <tr class="even">
+                        <td rowspan="2">Строка 3, Ячейка 1 (объединена с 4)</td>
+                        <td>Строка 3, Ячейка 2</td>
+                        <td>Строка 3, Ячейка 3</td>
+                        <td>Строка 3, Ячейка 4</td>
+                    </tr>
+                    <tr class="odd">
+                        <td>Строка 4, Ячейка 2</td>
+                        <td>Строка 4, Ячейка 3</td>
+                        <td>Строка 4, Ячейка 4</td>
+                    </tr>
+                    <tr class="even">
+                        <td>Строка 5, Ячейка 1</td>
+                        <td>Строка 5, Ячейка 2</td>
+                        <td>Строка 5, Ячейка 3</td>
+                        <td>Строка 5, Ячейка 4</td>
+                    </tr>
+                    <tr class="odd">
+                        <td>Строка 6, Ячейка 1</td>
+                        <td>Строка 6, Ячейка 2</td>
+                        <td>Строка 6, Ячейка 3</td>
+                        <td>Строка 6, Ячейка 4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Блок 3: Форма -->
+        <section id="form" class="content-block">
+            <h2>Форма</h2>
+            <form action="/submit" method="POST">
+                
+                <div class="form-group">
+                    <label for="fio">ФИО:</label>
+                    <input type="text" id="fio" name="fio" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">Дата рождения:</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+                </div>
+
+                <div class="form-group radio-group">
+                    <label>Пол:</label>
+                    <input type="radio" id="male" name="gender" value="male" checked>
+                    <label for="male">Мужской</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Женский</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="languages">Любимый язык программирования:</label>
+                    <select id="languages" name="languages[]" multiple size="6">
+                        <option value="Pascal">Pascal</option>
+                        <option value="C">C</option>
+                        <option value="C++">C++</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="PHP">PHP</option>
+                        <option value="Python">Python</option>
+                        <option value="Java">Java</option>
+                        <option value="Haskell">Haskell</option>
+                        <option value="Clojure">Clojure</option>
+                        <option value="Prolog">Prolog</option>
+                        <option value="Scala">Scala</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bio">Биография:</label>
+                    <textarea id="bio" name="bio" rows="5"></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="contract" name="contract" value="yes" required>
+                    <label for="contract">С контрактом ознакомлен (а)</label>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Сохранить</button>
+                </div>
+
+            </form>
+        </section>
+
+    </main>
+
+    <!-- ==================== ПОДВАЛ (FOOTER) ==================== -->
+    <!-- Подвал тянется на всю ширину окна -->
+    <footer id="main-footer">
+        <div class="container">
+            (с) Сергей Синица
+        </div>
+    </footer>
+
+</body>
+</html>
