@@ -1,205 +1,426 @@
-/* === БАЗОВЫЕ СТИЛИ И СБРОС === */
+/* --- Общие настройки --- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
-    color: #000;
-    background-color: #fff;
+:root {
+    --blue: #4a90e2;
+    --blue-dark: #357abd;
+    --blue-soft: #eaf2fb;
+    --ink: #33313b;
+    --muted: #6b7280;
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --line: #e2e8f0;
+    --radius: 10px;
+    --shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
-/* Контейнер: ограничивает ширину 960px и центрирует */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+}
+
 .container {
     max-width: 960px;
     margin: 0 auto;
     padding: 0 15px;
 }
 
-/* ==================== ШАПКА (HEADER) ==================== */
-#main-header {
-    width: 100%; /* Тянется на всю ширину окна */
-    padding: 20px 0;
-    border-bottom: 2px solid #000; /* Рамка как на макете */
+/* --- Шапка сайта (Header) --- */
+.site-header {
+    background-color: #fff;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    padding: 15px 0;
+    margin-bottom: 24px;
 }
 
-/* Внутренняя структура шапки: Лого и Название слева, Меню справа */
 .header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-left {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
 /* Логотип (круг) */
-#logo {
+.logo-circle {
     width: 70px;
     height: 70px;
-    border-radius: 50%; /* Делает круг */
-    border: 2px solid #000;
+    border: 2px solid var(--blue);
+    border-radius: 50%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 16px;
-    font-weight: bold;
+    align-items: center;
+    flex-shrink: 0;
+    background-color: var(--blue-soft);
 }
 
-/* Название сайта */
-#site-name {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* Меню навигации (NAV) */
-#main-nav {
-    display: flex;
-    gap: 15px;
-}
-
-#main-nav a {
+.logo-circle a {
     text-decoration: none;
-    color: #000;
-    font-size: 16px;
-    padding: 5px 10px;
-    border: 1px solid #000; /* Рамка вокруг ссылок как на макете */
+    color: var(--blue-dark);
+    font-weight: bold;
+    font-size: 14px;
 }
 
-#main-nav a:hover {
-    background-color: #eee;
-}
-
-/* ==================== ОСНОВНОЙ КОНТЕНТ ==================== */
-main {
-    padding: 30px 0;
+.header-content {
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Расстояние между блоками */
+    flex-grow: 1;
+    gap: 8px;
 }
 
-/* Стиль для блоков (Список, Таблица, Форма) */
-.content-block {
-    background-color: #7fb3e0; /* Синий цвет как на макете */
-    padding: 20px;
-    border: 2px solid #000; /* Рамка как на макете */
+/* Меню навигации (nav) */
+.main-nav {
+    display: flex;
+    gap: 18px;
+    padding: 9px 14px;
+    background-color: var(--blue-soft);
+    border-radius: 8px;
 }
 
-.content-block h2 {
-    margin-bottom: 15px;
-    font-size: 20px;
+.main-nav a {
+    color: #244160;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
 
-/* === Ссылки === */
-.content-block a {
-    color: #000;
+.main-nav a:hover {
+    color: var(--blue-dark);
     text-decoration: underline;
 }
 
-.content-block ul {
-    margin-left: 20px;
+/* Название сайта */
+.site-title {
+    font-size: 17px;
+    font-weight: bold;
+    color: #222;
 }
 
-.content-block li {
-    margin-bottom: 5px;
+/* --- Основные блоки контента --- */
+.content-block {
+    background-color: var(--card);
+    padding: 24px 26px;
+    margin-bottom: 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
 }
 
-/* === ТАБЛИЦА === */
-table {
+.block-title {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 20px;
+    color: var(--blue-dark);
+    border-bottom: 2px solid var(--blue-soft);
+    padding-bottom: 10px;
+}
+
+/* --- Список ссылок --- */
+.link-list {
+    list-style: none;
+    counter-reset: link;
+    margin: 0 0 8px;
+    padding: 0;
+}
+
+.link-list > li {
+    counter-increment: link;
+    position: relative;
+    padding: 8px 10px 8px 44px;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.link-list > li::before {
+    content: counter(link);
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: var(--blue-soft);
+    color: var(--blue-dark);
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link-list > li:hover {
+    background-color: #f7fafd;
+}
+
+a {
+    color: var(--blue-dark);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+a:hover {
+    color: var(--blue);
+    border-color: var(--blue);
+}
+
+.img-link:hover {
+    border-color: transparent;
+}
+
+.item-img {
+    display: block;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-top: 6px;
+}
+
+.ctx-item {
+    color: var(--muted);
+}
+
+.sub-list {
+    list-style: none;
+    margin: 10px 0 2px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.sub-list li {
+    margin: 0;
+    padding: 5px 14px;
+    background-color: var(--blue-soft);
+    border-radius: 999px;
+    font-size: 14px;
+}
+
+.hotmap {
+    position: relative;
+    width: 240px;
+    height: 120px;
+    margin: 10px 0 4px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--blue-soft);
+}
+
+.hotmap-rect {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 120px;
+    height: 120px;
+    box-sizing: border-box;
+    border: 2px solid var(--blue);
+    background: rgba(74, 144, 226, 0.12);
+    transition: background-color 0.2s ease;
+}
+
+.hotmap-circle {
+    position: absolute;
+    left: 125px;
+    top: 5px;
+    width: 110px;
+    height: 110px;
+    box-sizing: border-box;
+    border: 2px solid var(--blue);
+    border-radius: 50%;
+    background: rgba(74, 144, 226, 0.12);
+    transition: background-color 0.2s ease;
+}
+
+.hotmap-rect:hover {
+    background: rgba(74, 144, 226, 0.3);
+}
+
+.hotmap-circle:hover {
+    background: rgba(74, 144, 226, 0.3);
+}
+
+/* --- Таблица --- */
+.data-table {
     width: 100%;
-    border-collapse: collapse; /* Убирает двойные рамки */
-    background-color: #fff;
+    border-collapse: collapse;
+    font-size: 14px;
+    border: 1px solid var(--line);
 }
 
-th, td {
-    border: 2px solid #000;
-    padding: 10px;
+.data-table th,
+.data-table td {
+    border: 1px solid var(--line);
+    padding: 10px 12px;
     text-align: left;
 }
 
-th {
-    background-color: #f0f0f0; /* Светлый фон для заголовков */
+.data-table th {
+    background-color: var(--blue-soft);
+    color: #244160;
     font-weight: bold;
 }
 
-/* Четные и нечетные строки */
-tr.even {
-    background-color: #e0e0e0; /* Темнее */
+/* Чередование строк (нечетные/четные) */
+.data-table tbody tr:nth-child(even) {
+    background-color: #f8fafc;
 }
 
-tr.odd {
-    background-color: #ffffff; /* Светлее */
+.data-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
 }
 
-/* === ФОРМА === */
+.data-table tbody tr:hover {
+    background-color: #eef5fc;
+}
+
+/* --- Форма --- */
+.site-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
 .form-group {
-    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #444;
 }
 
-/* Поля ввода */
 input[type="text"],
 input[type="tel"],
 input[type="email"],
 input[type="date"],
-textarea,
-select {
-    width: 100%;
-    padding: 8px;
-    border: 2px solid #000;
-    font-size: 15px;
+textarea {
+    padding: 9px 12px;
+    border: 1px solid #d0d7e2;
+    border-radius: 6px;
     font-family: inherit;
-    background-color: #fff;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
 }
 
 textarea {
     resize: vertical;
-    min-height: 80px;
+    min-height: 110px;
 }
 
-/* Радиокнопки и чекбоксы (выстраиваем в ряд) */
-.radio-group, .checkbox-group {
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 8px;
+}
+
+.choice-group {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
-.radio-group label, .checkbox-group label {
+.choice,
+.check,
+.agree {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     font-weight: normal;
-    margin-bottom: 0;
+    cursor: pointer;
+    font-size: 14px;
 }
 
-/* Кнопка */
-button {
-    background-color: #fff;
-    color: #000;
-    border: 2px solid #000;
-    padding: 10px 25px;
-    font-size: 16px;
-    font-weight: bold;
+.check {
+    padding: 8px 12px;
+    background-color: #f8fafc;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.check:hover {
+    border-color: var(--blue);
+    background-color: var(--blue-soft);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: var(--blue);
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #eee;
+button[type="submit"] {
+    background-color: var(--blue);
+    color: #fff;
+    border: none;
+    padding: 11px 26px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background-color 0.2s ease;
 }
 
-/* ==================== ПОДВАЛ (FOOTER) ==================== */
-#main-footer {
-    width: 100%; /* Тянется на всю ширину окна */
+button[type="submit"]:hover {
+    background-color: var(--blue-dark);
+}
+
+.form-error {
+    color: #d64541;
+    font-size: 13px;
+    display: none;
+    font-weight: 600;
+}
+
+/* --- Подвал (Footer) --- */
+.site-footer {
+    background-color: #fff;
+    border-top: 1px solid var(--line);
     padding: 20px 0;
-    border-top: 2px solid #000; /* Рамка как на макете */
-    font-weight: bold;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* --- Адаптивность --- */
+@media (max-width: 640px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 }
